@@ -1,15 +1,42 @@
-//
-//  main.cpp
-//  09.17.02
-//
-//  Created by s20181105879 on 2019/9/17.
-//  Copyright © 2019 s20181105879. All rights reserved.
-//
+#include <stdio.h>
+#include <stdlib.h>
 
-#include <iostream>
+struct ListNode {
+    int data;
+    struct ListNode *next;
+};
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+struct ListNode *createlist();
+
+int main()
+{
+    struct ListNode *p, *head = NULL;
+    
+    head = createlist();
+    for ( p = head; p != NULL; p = p->next )
+        printf("%d ", p->data);
+    printf("\n");
+    
     return 0;
+}
+struct ListNode *createlist()
+{
+    struct ListNode *head,*newhead,*p;
+    newhead=head=(struct ListNode *)malloc(sizeof(struct ListNode));
+    head->next=NULL;
+    int n;
+    scanf("%d",&n);
+    while (1) {
+        if(n==-1)
+        {
+            break;
+        }
+        p=(struct ListNode *)malloc(sizeof(struct ListNode));
+        p->data=n;
+        p->next=head->next;
+        head->next=p;
+      scanf("%d",&n);
+        
+    }
+    return  head->next;
 }
